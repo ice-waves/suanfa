@@ -3,6 +3,7 @@ import universal_character_word_spelling as ucws
 import find_location as fl
 import generate_huffman_tree as ght
 import min_difference as md
+import buy_gems as bg
 
 class TestCase(unittest.TestCase):
 	"""docstring for TestExampleSpell"""
@@ -28,6 +29,18 @@ class TestCase(unittest.TestCase):
 		result = md.minDifference(scores)
 		expect = 1
 		self.assertEqual(result, expect)
+	
+	def testBuyGems(self):
+		cases = [
+			{'gems': [8, 4, 6, 3, 1, 6, 7], 'money': 10, 'expect': 3},
+			{'gems': [], 'money': 1, 'expect': 0},
+			{'gems': [6, 1, 3, 1, 8, 9, 3, 2, 4], 'money': 15, 'expect': 4},
+   			{'gems': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'money': 10, 'expect': 9},
+		]
+  
+		for every in cases:
+			result = bg.buyGems(len(every['gems']), every['gems'], every['money'])
+			self.assertEqual(result, every['expect'])
 
 if __name__ == '__main__':
 	unittest.main()

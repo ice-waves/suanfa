@@ -86,7 +86,6 @@ class HuffmanTree:
 			return
 		self.midOrder(node.nodeLeft)
 		self.midOrderResult.append(node.value)
-		print(self.midOrderResult)
 		self.midOrder(node.nodeRight)
 
 
