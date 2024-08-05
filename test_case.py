@@ -4,6 +4,8 @@ import find_location as fl
 import generate_huffman_tree as ght
 import min_difference as md
 import buy_gems as bg
+import invest_finance as infi
+
 
 class TestCase(unittest.TestCase):
 	"""docstring for TestExampleSpell"""
@@ -42,5 +44,37 @@ class TestCase(unittest.TestCase):
 			result = bg.buyGems(len(every['gems']), every['gems'], every['money'])
 			self.assertEqual(result, every['expect'])
 
+	def testInvestFinance(self):
+		cases = [
+      		{
+       			'productsNum': 5,
+          		'totalInvestmentAmount': 100, 
+            	'totalRisk': 10, 
+             	'productsRate': [10, 20, 30, 40, 50],
+				'productsRisk': [3, 4, 5, 6, 10],
+				'productsMaxInvest': [20, 30, 20, 40, 30],
+				'expect': [0, 30, 0, 40, 0]
+			},
+			{
+       			'productsNum': 2,
+          		'totalInvestmentAmount': 100, 
+            	'totalRisk': 10, 
+             	'productsRate': [10, 20],
+				'productsRisk': [5, 6],
+				'productsMaxInvest': [40, 30],
+				'expect': [0, 30]
+			}
+		]
+		for every in cases:
+			result = infi.investFinance(
+				every['productsNum'],
+				every['totalInvestmentAmount'],
+				every['totalRisk'],
+				every['productsRate'],
+				every['productsRisk'],
+				every['productsMaxInvest']
+            )
+			self.assertEqual(result, every['expect'])
+ 
 if __name__ == '__main__':
 	unittest.main()
