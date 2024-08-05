@@ -5,7 +5,7 @@ import generate_huffman_tree as ght
 import min_difference as md
 import buy_gems as bg
 import invest_finance as infi
-
+import seat_num as sn
 
 class TestCase(unittest.TestCase):
 	"""docstring for TestExampleSpell"""
@@ -75,6 +75,20 @@ class TestCase(unittest.TestCase):
 				every['productsMaxInvest']
             )
 			self.assertEqual(result, every['expect'])
- 
+	
+
+	def testSeatNum(self):
+		cases = [
+      		{'seatTag': [1, 0, 0, 0, 1], 'expect': 1},
+			{'seatTag': [0, 1, 0, 1], 'expect': 0},
+			{'seatTag': [0, 0, 0, 0, 0, 0], 'expect': 3},
+			{'seatTag': [0], 'expect': 1},
+			{'seatTag': [1], 'expect': 0}
+        ]
+		for every in cases:
+			result = sn.seatNum(every['seatTag'])
+			self.assertEqual(result, every['expect'])
+   
+   
 if __name__ == '__main__':
 	unittest.main()
