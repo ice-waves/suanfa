@@ -6,6 +6,8 @@ import min_difference as md
 import buy_gems as bg
 import invest_finance as infi
 import seat_num as sn
+import find_gold as fg
+import password_check as pc
 
 class TestCase(unittest.TestCase):
 	"""docstring for TestExampleSpell"""
@@ -88,7 +90,26 @@ class TestCase(unittest.TestCase):
 		for every in cases:
 			result = sn.seatNum(every['seatTag'])
 			self.assertEqual(result, every['expect'])
-   
-   
+	
+	def testFindGold(self):
+		cases = [
+			{'m': 4, 'n': 5, 'k': 7, 'expect': 20},
+			{'m': 40, 'n': 40, 'k': 18, 'expect': 1484}
+		]
+
+		for every in cases:
+			result = fg.findGold(every['m'], every['n'], every['k'])
+			self.assertEqual(result, every['expect'])
+	
+	def testPasswordCheck(self):
+		cases = [
+			{'str': 'ABC<c89%000<', 'expect': 'ABc89%00,true'},
+			{'str': '<ABC', 'expect': 'ABC,false'},
+			{'str': 'AB<<C<', 'expect': ',false'}
+		]
+		for every in cases:
+			result = pc.passwordCheck(every['str'])
+			self.assertEqual(result, every['expect'])
+
 if __name__ == '__main__':
 	unittest.main()
