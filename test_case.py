@@ -8,6 +8,8 @@ import invest_finance as infi
 import seat_num as sn
 import find_gold as fg
 import password_check as pc
+import sushi as ss
+
 
 class TestCase(unittest.TestCase):
 	"""docstring for TestExampleSpell"""
@@ -111,5 +113,16 @@ class TestCase(unittest.TestCase):
 			result = pc.passwordCheck(every['str'])
 			self.assertEqual(result, every['expect'])
 
+	def testSushi(self):
+		cases = [
+			{'prices': [3, 14, 15, 6, 5], 'expect': [3, 20, 21, 11, 8]},
+			{'prices': [3, 15, 6, 14], 'expect': [3, 21, 9, 17]}
+		]
+
+		for every in cases:
+			result = ss.buySushi(every['prices'])
+			self.assertEqual(result, every['expect'])
+   
+   
 if __name__ == '__main__':
 	unittest.main()
