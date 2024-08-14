@@ -9,6 +9,7 @@ import seat_num as sn
 import find_gold as fg
 import password_check as pc
 import sushi as ss
+import data_compression as dc
 
 
 class TestCase(unittest.TestCase):
@@ -122,7 +123,17 @@ class TestCase(unittest.TestCase):
 		for every in cases:
 			result = ss.buySushi(every['prices'])
 			self.assertEqual(result, every['expect'])
-   
+	
+	def testDataCompression(self):
+		cases = [
+			{'points': [2, 8, 3, 7,3, 6, 3, 5, 4, 4, 5, 3, 6, 2, 7, 3, 8, 4, 7, 5], 'expect': [2, 8, 3, 7, 3, 5, 6, 2, 8, 4, 7, 5]},
+			{'points': [3, 0, 2, 0, 4, 0], 'expect': [3, 0, 4, 0]}
+  		]
+
+		for every in cases:
+			result = dc.dataCompression(every['points'])
+			self.assertEqual(result, every['expect'])
+ 
    
 if __name__ == '__main__':
 	unittest.main()
